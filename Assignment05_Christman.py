@@ -9,8 +9,8 @@ class BasicMathOperations():
         print(str(num1) + "+" + str(num2), "=", num1+num2) #Returning the sum of those two numbers to the terminal
         return num1+num2 #Actually returning the sum
     def operation(self,num1,num2,operator): #Creates a method to do a certain operator on two numbers. Valid operator calls: addition - "+", subtraction - "-", multiplication "*" or "x", division "/". 
-        if type(num1) == float or type(num1) == int: #Checking both num1 and num2 are numbers
-            if type(num2) == float or type(num2) == int:
+        if type(num1) is float or type(num1) is int: #Checking both num1 and num2 are numbers
+            if type(num2) is float or type(num2) is int:
                 if operator == "+": #If the operator is addition
                     return num1+num2 #Returns the sum of the numbers
                 elif operator == "-": #If the operator is subtraction
@@ -25,16 +25,26 @@ class BasicMathOperations():
                 print("Error: num1 and num2 must be float or integer values") #Error for if user puts non-numbers into the function
         else:
             print("Error: num1 and num2 must be float or integer values") #Error for if user puts non-numbers into the function
-
+    def calculateSquare(self,num): #Calculates the square of the number given by the user
+        if type(num) is float or type(num) is int: #Making sure the given number is actually a number
+            return(num*num)
+        else:
+            print("Error: num must be a number")
+    def factorial(self,num): #Calculates the factorial of an integer using recursion because it's a free country
+        if type(num) is int and num >= 0: #Making sure that the given number is a integer greater than or equal to zero
+            if num == 0 or num == 1: #If the given number is zero or one
+                return(1) #Returns 1
+            else:
+                return(num*self.factorial(num-1)) #Returns the current number times the factorial of the number smaller than it
+        else:
+            print("Error: num must be zero or a positive integer")
+    
 def main():
-    obj1 = BasicMathOperations()
-    print(obj1.operation(12,4,"/"))
-    print(obj1.operation(15,8,"*"))
-    print(obj1.operation(12,5,"-"))
-    print(obj1.operation(15,2,"+"))
-    print(obj1.operation("Snail",2,"+"))
-    print(obj1.operation(1,2,"Snail"))
-    print(obj1.operation(1,"Snail",2))
-    print(type(obj1))
+    a = BasicMathOperations()
+    print(a.calculateSquare(10))
+    print(a.calculateSquare("elf"))
+    print(a.factorial(10))
+    print(a.factorial(-1))  
+    print(a.factorial("dog"))
     
 main()
