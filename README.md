@@ -1,1 +1,1 @@
-# Assignment05
+This is code for a Python class named BasicMathOperations, which allows the user to execute basic math functions between two numbers. To use the class, download the Python file and insert it into a project.
