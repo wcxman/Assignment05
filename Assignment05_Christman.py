@@ -54,11 +54,11 @@ class BasicMathOperations():
             return (self.calculateSquare(a)+self.calculateSquare(b))**0.5 #Returns the square root of the sum of a squared and b squared, which is the Pythagorean theorem.
         else:
             print("Error: a and b must both be numbers")
-    def areaRect(self,l,w): #A method to calculate the area of a rectangle given length l and width w
-        if (type(l) is int or type(l) is float) and (type(w) is int or type(w) is float): #Making sure the numbers given are numbers
-            return l*w #Returns length times width
+    def areaRect(self,l,h): #A method to calculate the area of a rectangle given length l and width w
+        if (type(l) is int or type(l) is float) and (type(h) is int or type(h) is float): #Making sure the numbers given are numbers
+            return l*h #Returns length times height
         else:
-            print("Error: l and w must both be numbers.")
+            print("Error: l and h must both be numbers.")
     def numPow(self,n,power): #A method to calculate a number n to a power
         if(type(n) is int or type(n) is float) and (type(power) is int or type(power) is float): #Making sure the numbers given are numbers
             return n**power #Returns n to the given power
@@ -68,13 +68,32 @@ class BasicMathOperations():
         return type(arg) #Returns the type of arg
 def main():
     a = BasicMathOperations()
-    print(a.areaRect(3,4))
-    print(a.areaRect("Dog",5))
-    print(a.areaRect(6,"6"))
-    print(a.numPow(5,3))
-    print(a.numPow(-12,3.45))
-    print(a.numPow("Dog",0))
-    print(a.numPow(5,"Elf"))
-    print(a.argumentType("test"))
-    print(a.argumentType(5))
+    todo = True
+    print('''Welcome to the math operations interface! Commands:
+              GREET: Greets you, the user
+              ADD: Adds two numbers
+              OP: Takes two numbers and uses the specified operation on them
+              SQ: Squares a number
+              FAC: Takes the factorial of a number
+              COUNT: Counts between two integers
+              HYP: Calculates the hypotenuse of a right triangle given base and height
+              RECT: Calculates the area of a rectangle given length and height
+              POW: Takes a number to a power
+              TYPE: Shows the type of an argument
+              EXIT: Exits the interface''') #Sets up the user interface
+    while(todo): #Repeats until the user exits
+        cmd = str(input("")).upper() #Takes the user's command and sets it to all uppercase
+        if cmd == "EXIT":
+            todo = False #Breaks the while loop
+        elif cmd == "ADD":
+            a.add()
+        elif cmd == "OP":
+            n1 = float(input("First number? "))
+            n2 = float(input("Second number? "))
+            op = input("Operation character? ")
+            if a.operation(n1, n2, op) is not None:
+                print(str(n1) + op + str(n2), "=", a.operation(n1, n2, op))
+        elif cmd == "TYPE":
+            inp = input("Argument: ")
+            print(a.argumentType(inp))
 main()
