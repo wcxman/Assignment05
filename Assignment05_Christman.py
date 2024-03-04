@@ -31,7 +31,7 @@ class BasicMathOperations():
             return(num*num)
         else:
             print("Error: num must be a number")
-    def factorial(self,num): #Calculates the factorial of an INTEGER using recursion because it's a free country
+    def factorial(self,num): #Calculates the factorial of an INTEGER using recursion
         if type(num) is int and num >= 0: #Making sure that the given number is a integer greater than or equal to zero
             if num == 0 or num == 1: #If the given number is zero or one
                 return(1) #Returns 1
@@ -54,15 +54,27 @@ class BasicMathOperations():
             return (self.calculateSquare(a)+self.calculateSquare(b))**0.5 #Returns the square root of the sum of a squared and b squared, which is the Pythagorean theorem.
         else:
             print("Error: a and b must both be numbers")
+    def areaRect(self,l,w): #A method to calculate the area of a rectangle given length l and width w
+        if (type(l) is int or type(l) is float) and (type(w) is int or type(w) is float): #Making sure the numbers given are numbers
+            return l*w #Returns length times width
+        else:
+            print("Error: l and w must both be numbers.")
+    def numPow(self,n,power): #A method to calculate a number n to a power
+        if(type(n) is int or type(n) is float) and (type(power) is int or type(power) is float): #Making sure the numbers given are numbers
+            return n**power #Returns n to the given power
+        else:
+            print("Error: n and power must both be numbers.")
+    def argumentType(self,arg): #A method to return the type of an argument "arg"
+        return type(arg) #Returns the type of arg
 def main():
     a = BasicMathOperations()
-    a.counting(12,20)
-    a.counting("dog",20)
-    a.counting(12,"dog")
-    a.counting(20,12)
-    a.counting(12.1,20)
-    print(a.calculateHypotenuse(3,4))
-    print(a.calculateHypotenuse("asdf",4))
-    print(a.calculateHypotenuse(3,"asdf"))
-
+    print(a.areaRect(3,4))
+    print(a.areaRect("Dog",5))
+    print(a.areaRect(6,"6"))
+    print(a.numPow(5,3))
+    print(a.numPow(-12,3.45))
+    print(a.numPow("Dog",0))
+    print(a.numPow(5,"Elf"))
+    print(a.argumentType("test"))
+    print(a.argumentType(5))
 main()
