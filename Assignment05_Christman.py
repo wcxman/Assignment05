@@ -85,15 +85,43 @@ def main():
         cmd = str(input("")).upper() #Takes the user's command and sets it to all uppercase
         if cmd == "EXIT":
             todo = False #Breaks the while loop
+        elif cmd == "GREET":
+            a.greet()
         elif cmd == "ADD":
-            a.add()
+            a.add() #Uses the add method
         elif cmd == "OP":
-            n1 = float(input("First number? "))
+            n1 = float(input("First number? ")) #Takes the user's values
             n2 = float(input("Second number? "))
             op = input("Operation character? ")
-            if a.operation(n1, n2, op) is not None:
-                print(str(n1) + op + str(n2), "=", a.operation(n1, n2, op))
+            if a.operation(n1, n2, op) is not None: #If the operation does not return any errors
+                print(str(n1) + op + str(n2), "=", a.operation(n1, n2, op)) #Prints out the result
+        elif cmd == "SQ":
+            n1 = float(input("Number: ")) #Takes the user's value
+            print(str(n1) + "^2" , "=", a.calculateSquare(n1)) #Prints out the result
+        elif cmd == "FAC":
+            n1 = int(input("Integer: ")) #Takes the user's value
+            if a.factorial(n1) is not None: #If the method will return a value (if it doesn't, the error message is baked into the method)
+                print(str(n1) + "!" , "=", a.factorial(n1))
+        elif cmd == "COUNT":
+            start = int(input("Start (integer): ")) #Takes the user's values
+            end = int(input("End (integer): "))
+            a.counting(start, end) #Uses the counting method, which prints itself without returning anything\
+        elif cmd == "HYP":
+            aa = float(input("a: ")) #Takes the values
+            b = float(input("b: "))
+            print(str(aa) + "^2", "+", str(b) + "^2", "=", a.calculateHypotenuse(aa,b)**2) #Shows the answer in equation form
+            print("c", "=", a.calculateHypotenuse(aa, b)) #Shows the real value for c
+        elif cmd == "RECT": 
+            l = float(input("Length: "))
+            h = float(input("Height: "))
+            print("The area of the rectange is", a.areaRect(l, h))
+        elif cmd == "POW":
+            num = float(input("Number to be raised: "))
+            power = float(input("Power: "))
+            print(str(num) + "^" + str(power), "=", a.numPow(num, power))
         elif cmd == "TYPE":
             inp = input("Argument: ")
             print(a.argumentType(inp))
+        else:
+            print("Error: Unrecognized Command")
 main()
